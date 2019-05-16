@@ -1,5 +1,6 @@
 package com.example.classtempproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,14 +22,18 @@ public class MainActivity extends AppCompatActivity {
         mStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent j = new Intent(MainActivity.this, StudentActivity.class);
+                // j.putExtra("SCORE", mScore);
+                startActivity(j);
             }
         });
 
         mTeacherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent j = new Intent(MainActivity.this, TeacherActivity.class);
+               // j.putExtra("SCORE", mScore);
+                startActivity(j);
             }
         });
     }

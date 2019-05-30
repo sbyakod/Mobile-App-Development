@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Class Temp Project</string>
+    <string name="title_message">Classroom Temperature App</string>
     <string name="student_welcome">Welcome to the Student Temperature Menu!</string>
     <string name="teacher_welcome">Welcome to the Teacher Temperature Menu!</string>
+    <string name="instructions">Use the buttons below to adjust the temperature.</string>
 </resources>

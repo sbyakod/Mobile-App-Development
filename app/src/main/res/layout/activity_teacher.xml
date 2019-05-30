@@ -7,11 +7,18 @@
     android:background = "@android:color/holo_blue_dark">
 
     <TextView
-        android:id="@+id/student_message"
+        android:id="@+id/teacher_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:text="@string/teacher_welcome"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/teacher_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
         android:textColor="#FFFFFF"/>
 
 </LinearLayout>

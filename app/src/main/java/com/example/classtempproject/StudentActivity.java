@@ -40,6 +40,7 @@ public class StudentActivity extends AppCompatActivity {
         mStudentTempTextView = (TextView) findViewById(R.id.temp_textview);
 
         mTemp = getIntent().getIntExtra("TEMP",0);
+        myRef.setValue(mTemp);
 
         mStudentTempTextView.setText("We want a temperature of "+ mTemp + " degrees.");
 

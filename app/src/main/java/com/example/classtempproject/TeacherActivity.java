@@ -8,7 +8,7 @@ public class TeacherActivity extends AppCompatActivity {
 
     private TextView mTeacherTextView;
 
-    private int mTemp;
+    private int mWantTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +17,8 @@ public class TeacherActivity extends AppCompatActivity {
 
         mTeacherTextView = (TextView) findViewById(R.id.teacher_temp);
 
-        mTemp = getIntent().getIntExtra("TEMP",0);
+        mWantTemp = getIntent().getIntExtra("TEMP",0);
 
-        mTeacherTextView.setText("The students want a temperature of " + mTemp + "degrees.");
+        mTeacherTextView.setText("The students want a temperature of " + mWantTemp + " degrees.");
     }
 }

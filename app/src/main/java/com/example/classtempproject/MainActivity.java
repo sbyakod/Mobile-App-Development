@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mWantTemp = mTemp;
         myRef.setValue(mTemp);
 
-        mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees.");
+        mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees and the students want it to be " + mWantTemp + " degrees.");
 
         mStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent j = new Intent(MainActivity.this, TeacherActivity.class);
-                j.putExtra("TEMP", mTemp);
+                j.putExtra("TEMP", mWantTemp);
                 startActivity(j);
             }
         });
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 Integer value = dataSnapshot.getValue(Integer.class);
                 mTemp = value;
-                mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees.");
+                mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees and the students want it to be " + mWantTemp + " degrees.");
             }
 
             @Override
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == 1){
                 mWantTemp = data.getIntExtra("result", 0);
-                mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees but the students want it to be " + mWantTemp + " degrees.");
+                mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees and the students want it to be " + mWantTemp + " degrees.");
             }
         }
     }

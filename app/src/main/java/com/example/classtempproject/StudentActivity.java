@@ -24,7 +24,7 @@ public class StudentActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
-    private int mTemp;
+    private int mWantTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +39,26 @@ public class StudentActivity extends AppCompatActivity {
 
         mStudentTempTextView = (TextView) findViewById(R.id.temp_textview);
 
-        mTemp = getIntent().getIntExtra("TEMP",0);
-        myRef.setValue(mTemp);
+        mWantTemp = getIntent().getIntExtra("TEMP",0);
+        myRef.setValue(mWantTemp);
 
-        mStudentTempTextView.setText("We want a temperature of "+ mTemp + " degrees.");
+        mStudentTempTextView.setText("We want a temperature of "+ mWantTemp + " degrees.");
 
         mColderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTemp = mTemp - 2;
-                mStudentTempTextView.setText("We want a temperature of "+ mTemp + " degrees.");
-                myRef.setValue(mTemp);
+                mWantTemp = mWantTemp - 2;
+                mStudentTempTextView.setText("We want a temperature of "+ mWantTemp + " degrees.");
+                myRef.setValue(mWantTemp);
             }
         });
 
         mWarmerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTemp = mTemp + 2;
-                mStudentTempTextView.setText("We want a temperature of "+ mTemp + " degrees.");
-                myRef.setValue(mTemp);
+                mWantTemp = mWantTemp + 2;
+                mStudentTempTextView.setText("We want a temperature of "+ mWantTemp + " degrees.");
+                myRef.setValue(mWantTemp);
             }
         });
 
@@ -68,8 +68,8 @@ public class StudentActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 Integer value = dataSnapshot.getValue(Integer.class);
-                mTemp = value;
-                mStudentTempTextView.setText("We want a temperature of "+ mTemp + " degrees.");
+                mWantTemp = value;
+                mStudentTempTextView.setText("We want a temperature of "+ mWantTemp + " degrees.");
             }
 
             @Override
@@ -83,7 +83,7 @@ public class StudentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent returnIntent = getIntent();
-        returnIntent.putExtra("result", mTemp);
+        returnIntent.putExtra("result", mWantTemp);
         setResult(1, returnIntent);
         finish();
     }

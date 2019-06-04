@@ -4,4 +4,32 @@
     <string name="student_welcome">Welcome to the Student Temperature Menu!</string>
     <string name="teacher_welcome">Welcome to the Teacher Temperature Menu!</string>
     <string name="instructions">Use the buttons below to adjust the temperature.</string>
+    <string-array name="schools_array">
+        <item>TJHSST</item>
+        <item>School_2</item>
+        <item>School_3</item>
+        <item>School_4</item>
+        <item>School_5</item>
+    </string-array>
+    <string-array name="teachers_array">
+        <item>Ria Galanos (CS)</item>
+        <item>Teacher_2 (XX)</item>
+        <item>Teacher_3 (XX)</item>
+        <item>Teacher_4 (XX)</item>
+        <item>Teacher_5 (XX)</item>
+    </string-array>
+    <string-array name="periods_array">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="students_array">
+        <item>Sharath Byakod</item>
+        <item>Kazuya Chue</item>
+        <item>Student_3</item>
+        <item>Student_4</item>
+        <item>Student_5</item>
+    </string-array>
 </resources>

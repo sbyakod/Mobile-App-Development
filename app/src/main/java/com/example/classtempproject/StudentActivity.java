@@ -19,6 +19,7 @@ public class StudentActivity extends AppCompatActivity {
 
     private Button mColderButton;
     private Button mWarmerButton;
+    private Button mSubmitButton;
     private TextView mStudentTempTextView;
 
     private FirebaseDatabase database;
@@ -36,6 +37,7 @@ public class StudentActivity extends AppCompatActivity {
 
         mColderButton = (Button) findViewById(R.id.colder_button);
         mWarmerButton = (Button) findViewById(R.id.warmer_button);
+        mSubmitButton = (Button) findViewById(R.id.submit_button);
 
         mStudentTempTextView = (TextView) findViewById(R.id.temp_textview);
 
@@ -59,6 +61,16 @@ public class StudentActivity extends AppCompatActivity {
                 mWantTemp = mWantTemp + 2;
                 mStudentTempTextView.setText("We want a temperature of "+ mWantTemp + " degrees.");
                 myRef.setValue(mWantTemp);
+            }
+        });
+
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnIntent = getIntent();
+                returnIntent.putExtra("result", mWantTemp);
+                setResult(1, returnIntent);
+                finish();
             }
         });
 

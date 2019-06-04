@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentMonth;
     private int mTemp;
     private int mWantTemp;
+    private int mStudentLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("current_temp");
 
-
+        mStudentLogin = 0;
         mStudentButton = (Button) findViewById(R.id.student_button);
         mTeacherButton = (Button) findViewById(R.id.teacher_button);
         mCurrentTempTextView = (TextView) findViewById(R.id.current_temp);
@@ -59,9 +60,17 @@ public class MainActivity extends AppCompatActivity {
         mStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent j = new Intent(MainActivity.this, StudentActivity.class);
-                j.putExtra("TEMP", mTemp);
-                startActivityForResult(j, 1);
+                if(mStudentLogin > 0) {
+                    Intent j = new Intent(MainActivity.this, StudentActivity.class);
+                    j.putExtra("TEMP", mTemp);
+                    startActivityForResult(j, 1);
+                }
+                else{
+                    mStudentLogin = 1;
+                    Intent j = new Intent(MainActivity.this, StudentPreActivity.class);
+                    j.putExtra("TEMP", mTemp);
+                    startActivityForResult(j, 1);
+                }
             }
         });
 
@@ -70,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent j = new Intent(MainActivity.this, TeacherActivity.class);
                 j.putExtra("TEMP", mWantTemp);
-                startActivity(j);
+                startActivityForResult(j, 2);
             }
         });
 
@@ -99,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == 1){
                 mWantTemp = data.getIntExtra("result", 0);
+                mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees and the students want it to be " + mWantTemp + " degrees.");
+            }
+        }
+        if (requestCode == 2) {
+            if(resultCode == 2){
+                mTemp = data.getIntExtra("result", 0);
                 mCurrentTempTextView.setText("The current temperature is: " + mTemp + " degrees and the students want it to be " + mWantTemp + " degrees.");
             }
         }
